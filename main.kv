@@ -1,30 +1,76 @@
-FloatLayout:
-    MDLabel:
-        halign:"center"
-        text:"Dashboard"
-        font_style:"H4"
-        pos_hint:{"center_y":.95, "center_x":.3}
-    CashCard:
-        pos_hint:{"center_x":.3, "center_y":.6}
-        md_bg_color: 36/255, 146/255, 255/255, .8
-        on_release:
-            app.build()
+#:import sm kivy.uix.screenmanager
+ScreenManager:
+    id:manager
+    transition:sm.FadeTransition(duration=.0)
+    MDScreen:
+        name:"dashboard"
+        md_bg_color:.9, .9, .95, 1
+        FloatLayout:
+            CashCard:
+                size: 1920, 220
+                radius:[25]
+                pos_hint:{"center_y":.95, "center_x":.5}
+                elevation:0
+                md_bg_color: .94, .94, .99, 1
+                focus_behavior: False
+                ripple_behavior: False
+            MDLabel:
+                halign:"center"
+                text:"Dashboard"
+                font_style:"H3"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.9, "center_x":.2}
+                theme_text_color:"Custom"
+                text_color:150/255, 111/255, 51/255, 1
+            CashCard:
+                pos_hint:{"center_x":.2, "center_y":.65}
+                MDLabel:
+                    text:"Fleet"
+                    halign:"center"
+                    font_style:"H4"
+                    font_size:sp(50)
+                    font_name:'components/fonts/Gill Sans.otf'
+                    theme_text_color:"Custom"
+                    text_color:150/255, 111/255, 51/255, 1
+                    pos_hint:{"center_x":.3, "center_y":.5}
+            CashCard:
+                pos_hint:{"center_x":.5, "center_y":.65}
+                MDLabel:
+                    text:"Safari"
+                    halign:"center"
+                    font_style:"H4"
+                    font_size:sp(50)
+                    font_name:'components/fonts/Gill Sans.otf'
+                    theme_text_color:"Custom"
+                    text_color:150/255, 111/255, 51/255, 1
+                    pos_hint:{"center_x":.3, "center_y":.5}
+            CashCard:
+                pos_hint:{"center_x":.8, "center_y":.65}
+                MDLabel:
+                    text:"Maintenance"
+                    halign:"center"
+                    font_style:"H4"
+                    font_size:sp(45)
+                    font_name:'components/fonts/Gill Sans.otf'
+                    theme_text_color:"Custom"
+                    text_color:150/255, 111/255, 51/255, 1
+                    pos_hint:{"center_x":.45, "center_y":.5}
 
 
 <CashCard@MDCard>:
     orientation: "vertical"
-    md_bg_color: 36/255, 146/255, 255/255, .9
+    md_bg_color: .9, .9, .95, 1
     padding: "10dp"
     #spacing: "5dp"
     border_radius: 20
-    radius:10
+    #radius:dp(19)
     border_color_a: .5
-    radius: [5]
+    radius: [15]
     size_hint: None, None
-    size: 250, 120
+    size: 350, 220
     focus_behavior: True
-    unfocus_color: 36/255, 146/255, 255/255, .9
-    focus_color: 36/255, 146/255, 255/255, 1
+    unfocus_color: .9, .9, .95, 1
+    focus_color: .86, .86, .91, 1
     ripple_color:.9, .9, .95, 1
     ripple_behavior: True
     elevation: 3
