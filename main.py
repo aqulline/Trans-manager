@@ -1,7 +1,7 @@
 from kivy.properties import NumericProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
-
+import akivymd
 
 Window.size = (1920, 1016)
 Window.minimum_width, Window.minimum_height = Window.size
