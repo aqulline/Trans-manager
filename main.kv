@@ -1,0 +1,30 @@
+FloatLayout:
+    MDLabel:
+        halign:"center"
+        text:"Dashboard"
+        font_style:"H4"
+        pos_hint:{"center_y":.95, "center_x":.3}
+    CashCard:
+        pos_hint:{"center_x":.3, "center_y":.6}
+        md_bg_color: 36/255, 146/255, 255/255, .8
+        on_release:
+            app.build()
+
+
+<CashCard@MDCard>:
+    orientation: "vertical"
+    md_bg_color: 36/255, 146/255, 255/255, .9
+    padding: "10dp"
+    #spacing: "5dp"
+    border_radius: 20
+    radius:10
+    border_color_a: .5
+    radius: [5]
+    size_hint: None, None
+    size: 250, 120
+    focus_behavior: True
+    unfocus_color: 36/255, 146/255, 255/255, .9
+    focus_color: 36/255, 146/255, 255/255, 1
+    ripple_color:.9, .9, .95, 1
+    ripple_behavior: True
+    elevation: 3
