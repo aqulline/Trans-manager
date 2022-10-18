@@ -43,6 +43,12 @@ class MainApp(MDApp):
     total_petrol = StringProperty("")
     total_diesel = StringProperty("")
 
+    # SAFARI
+    location_origin = StringProperty("")
+    location_destination = StringProperty("")
+    date_origin = StringProperty("")
+    date_destination = StringProperty("")
+
     def build(self):
         self.size_x, self.size_y = Window.size
         self.theme_cls.theme_style = "Light"
