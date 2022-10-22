@@ -17,6 +17,7 @@ class MainApp(MDApp):
     car_owner = StringProperty("")
     car_driver = StringProperty("")
     car_status = StringProperty("")
+    status = StringProperty("Idle")
 
     # MAINTENANCE
     date_reported = StringProperty("")
@@ -48,6 +49,17 @@ class MainApp(MDApp):
     location_destination = StringProperty("")
     date_origin = StringProperty("")
     date_destination = StringProperty("")
+
+    # TRASH
+    status_counter = False
+
+    def v_status(self, instance):
+        if not instance.active:
+            self.status = "On road"
+            instance.active = True
+        elif instance.active:
+            self.status = "Idle"
+            instance.active = False
 
     def build(self):
         self.size_x, self.size_y = Window.size
