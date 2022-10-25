@@ -1,14 +1,38 @@
+import re
+
 from kivy.properties import NumericProperty, StringProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
+from kivymd.toast import toast
+from kivymd.uix.textfield import MDTextField
 
 Window.size = (1920, 1016)
 Window.minimum_width, Window.minimum_height = Window.size
 
 
+class NumberOnlyField(MDTextField):
+    pat = re.compile('[^0-9]')
+
+    def insert_text(self, substring, from_undo=False):
+
+        pat = self.pat
+
+        if "." in self.text:
+            s = re.sub(pat, "", substring)
+
+        else:
+            s = ".".join([re.sub(pat, "", s) for s in substring.split(".", 1)])
+
+        return super(NumberOnlyField, self).insert_text(s, from_undo=from_undo)
+
+
 class MainApp(MDApp):
     # App
     size_x, size_y = NumericProperty(0), NumericProperty(0)
+
+    #Dummy
+
+    vars = []
 
     # FLEET
     car_name = StringProperty("")
@@ -16,8 +40,15 @@ class MainApp(MDApp):
     car_year_purchased = StringProperty("")
     car_owner = StringProperty("")
     car_driver = StringProperty("")
+    car_type = StringProperty("")
     car_status = StringProperty("")
     status = StringProperty("Idle")
+    engine_no = StringProperty("")
+    engine_capacity = StringProperty("")
+    fuel_capacity = StringProperty("")
+    fuel_type = StringProperty("")
+    chassis_no = StringProperty("")
+    car_body = StringProperty("")
 
     # MAINTENANCE
     date_reported = StringProperty("")
@@ -60,6 +91,18 @@ class MainApp(MDApp):
         elif instance.active:
             self.status = "Idle"
             instance.active = False
+
+    def car_register(self, name, registration, manufactured_y, purchased_y, current_user,
+                     vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type):
+
+        if name != "" and registration != "" and manufactured_y != "" and purchased_y != "" and current_user != "" and \
+            vehicle_driver != "" and engine_no != "" and engine_capacity != "" and fuel_capacity != "" \
+                and fuel_type != "" and chassis_no != "" and body_type != "":
+
+            pass
+
+        else:
+            toast("Please fill all inputs")
 
     def build(self):
         self.size_x, self.size_y = Window.size
