@@ -103,12 +103,16 @@ class MainApp(MDApp):
     def car_register(self, name, registration, manufactured_y, purchased_y, current_user,
                      vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type):
 
+        print(name, registration, manufactured_y, purchased_y, current_user,
+              vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type)
+
         if name != "" and registration != "" and manufactured_y != "" and purchased_y != "" and current_user != "" and \
                 vehicle_driver != "" and engine_no != "" and engine_capacity != "" and fuel_capacity != "" \
                 and fuel_type != "" and chassis_no != "" and body_type != "":
 
             DB.car_json(DB(), name, registration, manufactured_y, purchased_y, current_user,
                         vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type)
+
 
         else:
             toast("Please fill all inputs")
