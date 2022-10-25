@@ -6,6 +6,8 @@ from kivy.core.window import Window
 from kivymd.toast import toast
 from kivymd.uix.textfield import MDTextField
 
+from database import DataBase as DB
+
 Window.size = (1920, 1016)
 Window.minimum_width, Window.minimum_height = Window.size
 
@@ -30,14 +32,15 @@ class MainApp(MDApp):
     # App
     size_x, size_y = NumericProperty(0), NumericProperty(0)
 
-    #Dummy
+    # Dummy
 
     vars = []
 
     # FLEET
     car_name = StringProperty("")
     car_id = StringProperty("")
-    car_year_purchased = StringProperty("")
+    car_purchased = StringProperty("")
+    car_manufactured = StringProperty("")
     car_owner = StringProperty("")
     car_driver = StringProperty("")
     car_type = StringProperty("")
@@ -92,14 +95,20 @@ class MainApp(MDApp):
             self.status = "Idle"
             instance.active = False
 
+    def car_validate(self):
+        self.car_register(self.car_name, self.car_id, self.car_manufactured, self.car_purchased, self.car_owner,
+                          self.car_driver, self.engine_no, self.engine_capacity, self.fuel_capacity, self.fuel_type,
+                          self.chassis_no, self.car_body)
+
     def car_register(self, name, registration, manufactured_y, purchased_y, current_user,
                      vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type):
 
         if name != "" and registration != "" and manufactured_y != "" and purchased_y != "" and current_user != "" and \
-            vehicle_driver != "" and engine_no != "" and engine_capacity != "" and fuel_capacity != "" \
+                vehicle_driver != "" and engine_no != "" and engine_capacity != "" and fuel_capacity != "" \
                 and fuel_type != "" and chassis_no != "" and body_type != "":
 
-            pass
+            DB.car_json(DB(), name, registration, manufactured_y, purchased_y, current_user,
+                        vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type)
 
         else:
             toast("Please fill all inputs")
