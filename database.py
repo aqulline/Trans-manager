@@ -1,7 +1,7 @@
 class DataBase:
 
     def car_json(self, name, registration, manufactured_y, purchased_y, current_user,
-                 vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type):
+                 vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type, status):
         data = {
             "car_name": name,
             "car_id": registration,
@@ -14,7 +14,8 @@ class DataBase:
             "fuel_capacity": fuel_capacity,
             "fuel_type": fuel_type,
             "chassis_no": chassis_no,
-            "body_type": body_type
+            "body_type": body_type,
+            "car_status": status
         }
 
         self.car_registers(data)

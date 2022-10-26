@@ -4,6 +4,7 @@ from kivy.properties import NumericProperty, StringProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivymd.toast import toast
+from kivymd.uix.card import MDCard
 from kivymd.uix.textfield import MDTextField
 
 from database import DataBase as DB
@@ -12,23 +13,14 @@ Window.size = (1920, 1016)
 Window.minimum_width, Window.minimum_height = Window.size
 
 
-class NumberOnlyField(MDTextField):
-    pat = re.compile('[^0-9]')
-
-    def insert_text(self, substring, from_undo=False):
-
-        pat = self.pat
-
-        if "." in self.text:
-            s = re.sub(pat, "", substring)
-
-        else:
-            s = ".".join([re.sub(pat, "", s) for s in substring.split(".", 1)])
-
-        return super(NumberOnlyField, self).insert_text(s, from_undo=from_undo)
+class CarCard(MDCard):
+    car_name = StringProperty("")
+    status = StringProperty("")
+    status_icon = StringProperty("")
 
 
 class MainApp(MDApp):
+
     # App
     size_x, size_y = NumericProperty(0), NumericProperty(0)
 
@@ -90,9 +82,11 @@ class MainApp(MDApp):
     def v_status(self, instance):
         if not instance.active:
             self.status = "On road"
+            self.car_status = self.status
             instance.active = True
         elif instance.active:
             self.status = "Idle"
+            self.car_status = self.status
             instance.active = False
 
     def car_validate(self):
@@ -104,15 +98,16 @@ class MainApp(MDApp):
                      vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type):
 
         print(name, registration, manufactured_y, purchased_y, current_user,
-              vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type)
+              vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type,
+              self.car_status)
 
         if name != "" and registration != "" and manufactured_y != "" and purchased_y != "" and current_user != "" and \
                 vehicle_driver != "" and engine_no != "" and engine_capacity != "" and fuel_capacity != "" \
                 and fuel_type != "" and chassis_no != "" and body_type != "":
 
             DB.car_json(DB(), name, registration, manufactured_y, purchased_y, current_user,
-                        vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type)
-
+                        vehicle_driver, engine_no, engine_capacity, fuel_capacity, fuel_type, chassis_no, body_type,
+                        self.car_status)
 
         else:
             toast("Please fill all inputs")

@@ -128,6 +128,29 @@ ScreenManager:
                 text_color: 150/255, 111/255, 51/255, 1
                 md_bg_color: 1, 1, 1, 1
                 radius: [50]
+        MDCard:
+            size: 500, 50
+            size_hint: None, None
+            pos_hint:{'center_x':.5, 'center_y':.93}
+            radius: [25]
+            on_release:
+                manager.current = "dashboard"
+            MDIconButton:
+                icon:"magnify"
+                pos_hint:{"center_y":.5, "center_x":.9}
+            MDLabel:
+                halign:"center"
+                text:"Search"
+                font_style:"H6"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.5, "center_x":.5}
+                theme_text_color:"Custom"
+                text_color:.7, .7, .7, .9
+
+        # WORkSPACE
+
+
+
         CheckCard:
             size: app.size_x/20, app.size_x/20
             pos_hint:{'center_x':.92, 'center_y':.1}
@@ -141,6 +164,7 @@ ScreenManager:
                 text_color: 1, 1, 1, 1
                 md_bg_color: 150/255, 111/255, 51/255, 1
                 radius: [50]
+                text_color:150/255, 111/255, 51/255, 1
 
     MDScreen:
         name:"dataInput"
@@ -491,6 +515,48 @@ ScreenManager:
     focus_behavior: False
     ripple_color:.9, .9, .95, 1
     ripple_behavior: True
+
+<CarCard>:
+    orientation: "vertical"
+    md_bg_color: 1, 1, 1, 1
+    pos_hint:{"center_x":.5,"center_y":.4}
+    padding: "10dp"
+    spacing: "5dp"
+    border_radius: 50
+    border_color_a: .5
+    border_color_a: 1
+    adaptive_height:True
+    radius: [25]
+    size_hint: None, None
+    size: 250, 150
+    focus_behavior: False
+    ripple_color:.9, .9, .95, 1
+    ripple_behavior: True
+    FloatLayout:
+        MDLabel:
+            halign:"center"
+            text:root.car_name
+            font_style:"H6"
+            font_size:sp(25)
+            font_name:'components/fonts/Gill Sans.otf'
+            pos_hint:{"center_y":.8, "center_x":.5}
+        MDLabel:
+            halign:"center"
+            text:root.status
+            font_style:"Body1"
+            #font_size:sp(25)
+            font_name:'components/fonts/Gill Sans Italic.otf'
+            pos_hint:{"center_y":.1, "center_x":.5}
+        MDIcon:
+            halign:"center"
+            icon:root.status_icon
+            font_size:sp(30)
+            theme_text_color:"Custom"
+            text_color: 1, 0, 0, .7
+            pos_hint:{"center_y":.3, "center_x":.5}
+
+
+
 
 
 <CashCard@MDCard>:
