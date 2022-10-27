@@ -113,58 +113,140 @@ ScreenManager:
 
     MDScreen:
         name:"fleet"
-        md_bg_color:.9, .9, .95, 1
-        CheckCard:
-            size: app.size_x/20, app.size_x/27
-            pos_hint:{'center_x':.03, 'center_y':.95}
-            radius: [15]
-            on_release:
-                manager.current = "dashboard"
-            MDIcon:
-                icon:"chevron-left"
-                halign:"center"
-                font_size: "55sp"
-                theme_text_color:"Custom"
-                text_color: 150/255, 111/255, 51/255, 1
-                md_bg_color: 1, 1, 1, 1
-                radius: [50]
-        MDCard:
-            size: 500, 50
-            size_hint: None, None
-            pos_hint:{'center_x':.5, 'center_y':.93}
-            radius: [25]
-            on_release:
-                manager.current = "dashboard"
-            MDIconButton:
-                icon:"magnify"
-                pos_hint:{"center_y":.5, "center_x":.9}
-            MDLabel:
-                halign:"center"
-                text:"Search"
-                font_style:"H6"
-                font_name:'components/fonts/Gill Sans.otf'
-                pos_hint:{"center_y":.5, "center_x":.5}
-                theme_text_color:"Custom"
-                text_color:.7, .7, .7, .9
+        md_bg_color:239/255, 239/255, 239/255, 1
+        FloatLayout:
+            CheckCard:
+                size: app.size_x/20, app.size_x/27
+                pos_hint:{'center_x':.03, 'center_y':.95}
+                radius: [15]
+                on_release:
+                    manager.current = "dashboard"
+                MDIcon:
+                    icon:"chevron-left"
+                    halign:"center"
+                    font_size: "55sp"
+                    theme_text_color:"Custom"
+                    text_color: 150/255, 111/255, 51/255, 1
+                    md_bg_color: 1, 1, 1, 1
+                    radius: [50]
+            MDCard:
+                size: 300, 50
+                size_hint: None, None
+                pos_hint:{'center_x':.9, 'center_y':.93}
+                radius: [25]
+                on_release:
+                    manager.current = "dashboard"
+                MDIconButton:
+                    icon:"magnify"
+                    pos_hint:{"center_y":.5, "center_x":.9}
+                MDLabel:
+                    halign:"center"
+                    text:"Search"
+                    font_style:"H6"
+                    font_name:'components/fonts/Gill Sans.otf'
+                    pos_hint:{"center_y":.5, "center_x":.5}
+                    theme_text_color:"Custom"
+                    text_color:.7, .7, .7, .9
+            MDCard:
+                size: 200, 90
+                size_hint:None, None
+                pos_hint:{"center_y":.9, "center_x":.3}
+                radius: [25]
+                FloatLayout:
 
-        # WORkSPACE
+                    MDLabel:
+                        halign:"center"
+                        text:"Total Cars"
+                        font_style:"H6"
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.6, "center_x":.5}
+                    MDLabel:
+                        halign:"center"
+                        text:"2"
+                        font_style:"H6"
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.3, "center_x":.5}
+
+            MDCard:
+                size: 200, 90
+                size_hint:None, None
+                pos_hint:{"center_y":.9, "center_x":.5}
+                radius: [25]
+                FloatLayout:
+
+                    MDLabel:
+                        halign:"center"
+                        text:"On road"
+                        font_style:"H6"
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.6, "center_x":.5}
+                    MDLabel:
+                        halign:"center"
+                        text:"0"
+                        font_style:"H6"
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.3, "center_x":.5}
+            MDCard:
+                size: 200, 90
+                size_hint:None, None
+                pos_hint:{"center_y":.9, "center_x":.7}
+                radius: [25]
+                FloatLayout:
+
+                    MDLabel:
+                        halign:"center"
+                        text:"Grounded"
+                        font_style:"H6"
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.6, "center_x":.5}
+                    MDLabel:
+                        halign:"center"
+                        text:"2"
+                        font_style:"H6"
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.3, "center_x":.5}
+
+            # WORkSPACE
+            DataContainer:
+                Details:
+                    height:car.height
+                    orientation:"vertical"
+                    RecycleView:
+                        id: cars
+                        key_viewclass: 'viewclass'
+                        key_size: 'height'
+                        pos_hint:{"center_x":.5,"center_y":.5}
+                        RecycleBoxLayout:
+                            id:car
+                            spacing:dp(1)
+                            padding: dp(10)
+                            default_size: None, dp(70)
+                            default_size_hint: 1, None
+                            size_hint_y: None
+                            height: self.minimum_height
+                            orientation: 'vertical'
 
 
-
-        CheckCard:
-            size: app.size_x/20, app.size_x/20
-            pos_hint:{'center_x':.92, 'center_y':.1}
-            on_release:
-                manager.current = "dataInput"
-            MDIcon:
-                icon:"plus"
-                halign:"center"
-                font_size: "45sp"
-                theme_text_color:"Custom"
-                text_color: 1, 1, 1, 1
-                md_bg_color: 150/255, 111/255, 51/255, 1
-                radius: [50]
-                text_color:150/255, 111/255, 51/255, 1
+            CheckCard:
+                size: app.size_x/20, app.size_x/20
+                pos_hint:{'center_x':.92, 'center_y':.1}
+                on_release:
+                    manager.current = "dataInput"
+                MDIcon:
+                    icon:"plus"
+                    halign:"center"
+                    font_size: "45sp"
+                    theme_text_color:"Custom"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: 150/255, 111/255, 51/255, 1
+                    radius: [50]
+                    text_color:150/255, 111/255, 51/255, 1
 
     MDScreen:
         name:"dataInput"
@@ -528,32 +610,61 @@ ScreenManager:
     adaptive_height:True
     radius: [25]
     size_hint: None, None
-    size: 250, 150
+    size: 250, 200
     focus_behavior: False
     ripple_color:.9, .9, .95, 1
     ripple_behavior: True
     FloatLayout:
+        MDIcon:
+            halign:"center"
+            icon:"car-estate"
+            font_size:sp(40)
+            #theme_text_color:"Custom"
+            #text_color: 1, 0, 0, .7
+            pos_hint:{"center_y":.5, "center_x":.02}
         MDLabel:
             halign:"center"
             text:root.car_name
             font_style:"H6"
             font_size:sp(25)
             font_name:'components/fonts/Gill Sans.otf'
-            pos_hint:{"center_y":.8, "center_x":.5}
+            pos_hint:{"center_y":.5, "center_x":.1}
         MDLabel:
             halign:"center"
             text:root.status
             font_style:"Body1"
             #font_size:sp(25)
             font_name:'components/fonts/Gill Sans Italic.otf'
-            pos_hint:{"center_y":.1, "center_x":.5}
+            pos_hint:{"center_y":.5, "center_x":.3}
         MDIcon:
             halign:"center"
             icon:root.status_icon
             font_size:sp(30)
             theme_text_color:"Custom"
             text_color: 1, 0, 0, .7
-            pos_hint:{"center_y":.3, "center_x":.5}
+            pos_hint:{"center_y":.5, "center_x":.33}
+        MDLabel:
+            halign:"center"
+            text:"CAR NAME"
+            font_style:"Body1"
+            #font_size:sp(25)
+            font_name:'components/fonts/Gill Sans Italic.otf'
+            pos_hint:{"center_y":.5, "center_x":.5}
+        MDLabel:
+            halign:"center"
+            text:"Manufacture"
+            font_style:"Body1"
+            #font_size:sp(25)
+            font_name:'components/fonts/Gill Sans Italic.otf'
+            pos_hint:{"center_y":.5, "center_x":.7}
+        MDLabel:
+            halign:"center"
+            text:"Driver Name"
+            font_style:"Body1"
+            #font_size:sp(25)
+            font_name:'components/fonts/Gill Sans Italic.otf'
+            pos_hint:{"center_y":.5, "center_x":.9}
+
 
 
 
@@ -577,3 +688,15 @@ ScreenManager:
     ripple_behavior: True
     elevation: 3
 
+<DataContainer@MDBoxLayout>:
+    size:dp(50),dp(50)
+    adaptive_height:True
+    orientation:"vertical"
+    pos_hint:{"top":.75}
+
+<Details@MDBoxLayout>:
+    radius:9
+    adaptive_height:True
+    #md_bg_color:.1,.1,.2,.1
+    pos_hint:{"center_x":.5,"top":.8}
+    orientation:"vertical"

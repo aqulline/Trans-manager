@@ -1,4 +1,3 @@
-
 class DataQuery:
     def vehicle_fetch(self):
 
@@ -15,7 +14,13 @@ class DataQuery:
                 stores = store.get()
 
                 return stores
+
             except:
-                return "No Internet!"
+                return False
 
 # x = DataQuery.vehicle_fetch(DataQuery())
+
+# for i, y in x.items():
+#    print(i)
+#    for k, l in y.items():
+#        print(l)

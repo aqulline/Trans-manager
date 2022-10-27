@@ -1,13 +1,13 @@
 import re
 
-from kivy.properties import NumericProperty, StringProperty
+from kivy.properties import NumericProperty, StringProperty, ListProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivymd.toast import toast
 from kivymd.uix.card import MDCard
-from kivymd.uix.textfield import MDTextField
 
 from database import DataBase as DB
+from database_query import DataQuery as DQ
 
 Window.size = (1920, 1016)
 Window.minimum_width, Window.minimum_height = Window.size
@@ -17,10 +17,19 @@ class CarCard(MDCard):
     car_name = StringProperty("")
     status = StringProperty("")
     status_icon = StringProperty("")
+    icon_color = ListProperty()
+    # checkbox-blank-circle, alert
+
+    def status_selector(self, status):
+        if status:
+            self.icon_color = 83 / 225, 186 / 225, 115 / 225, 1
+            return "checkbox-blank-circle"
+        else:
+            self.icon_color = 1, 0, 0, .7
+            return "alert"
 
 
 class MainApp(MDApp):
-
     # App
     size_x, size_y = NumericProperty(0), NumericProperty(0)
 
@@ -79,6 +88,10 @@ class MainApp(MDApp):
     # TRASH
     status_counter = False
 
+    def on_start(self):
+        self.add_item()
+
+    # DATA INPUTS FUNCTIONS
     def v_status(self, instance):
         if not instance.active:
             self.status = "On road"
@@ -111,6 +124,25 @@ class MainApp(MDApp):
 
         else:
             toast("Please fill all inputs")
+
+            # DATA DISPLAY CAR FUNCTIONS
+
+    def add_item(self):
+        main = DQ.vehicle_fetch(DQ())
+        if main:
+            for i, y in main.items():
+                self.root.ids.cars.data.append(
+                    {
+                        "viewclass": "CarCard",
+                        "car_name": i,
+                        "status": "Grounded",
+                        "status_icon": "alert"
+                    }
+                )
+        else:
+            img = self.root.ids.nodata
+            img.source = "components/icons/file-plus.jpg"
+
 
     def build(self):
         self.size_x, self.size_y = Window.size
