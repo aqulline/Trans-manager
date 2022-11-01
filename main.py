@@ -18,6 +18,7 @@ class CarCard(MDCard):
     status = StringProperty("")
     status_icon = StringProperty("")
     icon_color = ListProperty()
+
     # checkbox-blank-circle, alert
 
     def status_selector(self, status):
@@ -91,6 +92,7 @@ class MainApp(MDApp):
     cars_on_road = StringProperty("0")
     cars_idle = StringProperty("0")
 
+    counter = NumericProperty(0)
     def on_start(self):
         self.add_item()
 
@@ -132,22 +134,24 @@ class MainApp(MDApp):
 
     def add_item(self):
         main = DQ.vehicle_fetch(DQ())
-        self.total_cars = str(DQ.number_of_vehicles(DQ()))
-        self.cars_on_road = str(DQ.on_road(DQ()))
+        #self.total_cars = str(DQ.number_of_vehicles(DQ()))
+        #self.cars_on_road = str(DQ.on_road(DQ()))
         if main:
             for i, y in main.items():
-                self.root.ids.cars.data.append(
-                    {
-                        "viewclass": "CarCard",
-                        "car_name": i,
-                        "status": "Grounded",
-                        "status_icon": "alert"
-                    }
-                )
+                if self.counter <= 9:
+                    self.root.ids.cars.data.append(
+                        {
+                            "viewclass": "CarCard",
+                            "car_name": i,
+                            "id": i,
+                            "status": "Grounded",
+                            "status_icon": "alert"
+                        }
+                    )
+                self.counter = self.counter + 1
         else:
             img = self.root.ids.nodata
             img.source = "components/icons/file-plus.jpg"
-
 
     def build(self):
         self.size_x, self.size_y = Window.size

@@ -265,7 +265,20 @@ ScreenManager:
                             size_hint_y: None
                             height: self.minimum_height
                             orientation: 'vertical'
-
+            MDCard:
+                size: 210, 50
+                md_bg_color: 150/255, 111/255, 51/255, 1
+                size_hint:None, None
+                pos_hint:{"center_y":.03, "center_x":.5}
+                radius: [25]
+                FloatLayout:
+                    MDLabel:
+                        halign:"center"
+                        text:"View All"
+                        font_style:"H6"
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.5, "center_x":.5}
 
     MDScreen:
         name:"dataInput"

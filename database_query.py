@@ -28,9 +28,7 @@ class DataQuery:
         for i, y in data.items():
             print(i)
             for k, l in y.items():
-               print(l["car_status"])
                stat = l["car_status"]
-
                if stat == "On road":
                     counter += 1
 
