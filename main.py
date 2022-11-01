@@ -132,6 +132,8 @@ class MainApp(MDApp):
 
     def add_item(self):
         main = DQ.vehicle_fetch(DQ())
+        self.total_cars = str(DQ.number_of_vehicles(DQ()))
+        self.cars_on_road = str(DQ.on_road(DQ()))
         if main:
             for i, y in main.items():
                 self.root.ids.cars.data.append(
