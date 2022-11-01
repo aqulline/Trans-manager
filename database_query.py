@@ -18,9 +18,29 @@ class DataQuery:
             except:
                 return False
 
-# x = DataQuery.vehicle_fetch(DataQuery())
+    def number_of_vehicles(self):
 
-# for i, y in x.items():
-#    print(i)
-#    for k, l in y.items():
-#        print(l)
+        return len(self.vehicle_fetch())
+
+    def on_road(self):
+        counter = 0
+        data = self.vehicle_fetch()
+        for i, y in data.items():
+            print(i)
+            for k, l in y.items():
+               print(l["car_status"])
+               stat = l["car_status"]
+
+               if stat == "On road":
+                    counter += 1
+
+        return counter
+
+
+
+#x = DataQuery.vehicle_fetch(DataQuery())
+
+#z = DataQuery.number_of_vehicles(DataQuery())
+
+
+#DataQuery.on_road(DataQuery())

@@ -85,8 +85,11 @@ class MainApp(MDApp):
     date_origin = StringProperty("")
     date_destination = StringProperty("")
 
-    # TRASH
+    # !important
     status_counter = False
+    total_cars = StringProperty("0")
+    cars_on_road = StringProperty("0")
+    cars_idle = StringProperty("0")
 
     def on_start(self):
         self.add_item()

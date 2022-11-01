@@ -147,12 +147,29 @@ ScreenManager:
                     pos_hint:{"center_y":.5, "center_x":.5}
                     theme_text_color:"Custom"
                     text_color:.7, .7, .7, .9
+
+            MDFillRoundFlatIconButton:
+                icon: "plus"
+                text: "Add car"
+                pos_hint:{"center_y":.85, "center_x":.96}
+                md_bg_color:150/255, 111/255, 51/255, 1
+                on_release:
+                    manager.current = "dataInput"
+
             MDCard:
-                size: 200, 90
+                size: 200, 93
                 size_hint:None, None
                 pos_hint:{"center_y":.9, "center_x":.3}
                 radius: [25]
                 FloatLayout:
+
+                    MDIcon:
+                        halign:"center"
+                        icon:"car-estate"
+                        font_size:sp(30)
+                        pos_hint:{"center_y":.8, "center_x":.5}
+                        theme_text_color:"Custom"
+                        text_color: 150/255, 111/255, 51/255, 1
 
                     MDLabel:
                         halign:"center"
@@ -160,21 +177,29 @@ ScreenManager:
                         font_style:"H6"
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
-                        pos_hint:{"center_y":.6, "center_x":.5}
+                        pos_hint:{"center_y":.5, "center_x":.5}
                     MDLabel:
                         halign:"center"
-                        text:"2"
+                        text:app.total_cars
                         font_style:"H6"
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
-                        pos_hint:{"center_y":.3, "center_x":.5}
+                        pos_hint:{"center_y":.2, "center_x":.5}
 
             MDCard:
-                size: 200, 90
+                size: 200, 93
                 size_hint:None, None
                 pos_hint:{"center_y":.9, "center_x":.5}
                 radius: [25]
                 FloatLayout:
+
+                    MDIcon:
+                        halign:"center"
+                        icon:"checkbox-blank-circle"
+                        #font_size:sp(25)
+                        pos_hint:{"center_y":.8, "center_x":.5}
+                        theme_text_color:"Custom"
+                        text_color: 83 / 225, 186 / 225, 115 / 225, 1
 
                     MDLabel:
                         halign:"center"
@@ -182,20 +207,28 @@ ScreenManager:
                         font_style:"H6"
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
-                        pos_hint:{"center_y":.6, "center_x":.5}
+                        pos_hint:{"center_y":.5, "center_x":.5}
                     MDLabel:
                         halign:"center"
-                        text:"0"
+                        text:app.cars_on_road
                         font_style:"H6"
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
-                        pos_hint:{"center_y":.3, "center_x":.5}
+                        pos_hint:{"center_y":.2, "center_x":.5}
             MDCard:
-                size: 200, 90
+                size: 200, 93
                 size_hint:None, None
                 pos_hint:{"center_y":.9, "center_x":.7}
                 radius: [25]
                 FloatLayout:
+
+                    MDIcon:
+                        halign:"center"
+                        icon:"alert"
+                        #font_size:sp(25)
+                        pos_hint:{"center_y":.8, "center_x":.5}
+                        theme_text_color:"Custom"
+                        text_color: 1, 0, 0, .7
 
                     MDLabel:
                         halign:"center"
@@ -203,20 +236,21 @@ ScreenManager:
                         font_style:"H6"
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
-                        pos_hint:{"center_y":.6, "center_x":.5}
+                        pos_hint:{"center_y":.5, "center_x":.5}
                     MDLabel:
                         halign:"center"
-                        text:"2"
+                        text:app.cars_idle
                         font_style:"H6"
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
-                        pos_hint:{"center_y":.3, "center_x":.5}
+                        pos_hint:{"center_y":.2, "center_x":.5}
 
             # WORkSPACE
             DataContainer:
                 Details:
                     height:car.height
                     orientation:"vertical"
+
                     RecycleView:
                         id: cars
                         key_viewclass: 'viewclass'
@@ -232,21 +266,6 @@ ScreenManager:
                             height: self.minimum_height
                             orientation: 'vertical'
 
-
-            CheckCard:
-                size: app.size_x/20, app.size_x/20
-                pos_hint:{'center_x':.92, 'center_y':.1}
-                on_release:
-                    manager.current = "dataInput"
-                MDIcon:
-                    icon:"plus"
-                    halign:"center"
-                    font_size: "45sp"
-                    theme_text_color:"Custom"
-                    text_color: 1, 1, 1, 1
-                    md_bg_color: 150/255, 111/255, 51/255, 1
-                    radius: [50]
-                    text_color:150/255, 111/255, 51/255, 1
 
     MDScreen:
         name:"dataInput"
@@ -619,8 +638,8 @@ ScreenManager:
             halign:"center"
             icon:"car-estate"
             font_size:sp(40)
-            #theme_text_color:"Custom"
-            #text_color: 1, 0, 0, .7
+            theme_text_color:"Custom"
+            text_color: 150/255, 111/255, 51/255, 1
             pos_hint:{"center_y":.5, "center_x":.02}
         MDLabel:
             halign:"center"
@@ -635,14 +654,14 @@ ScreenManager:
             font_style:"Body1"
             #font_size:sp(25)
             font_name:'components/fonts/Gill Sans Italic.otf'
-            pos_hint:{"center_y":.5, "center_x":.3}
+            pos_hint:{"center_y":.5, "center_x":.33}
         MDIcon:
             halign:"center"
             icon:root.status_icon
             font_size:sp(30)
             theme_text_color:"Custom"
             text_color: 1, 0, 0, .7
-            pos_hint:{"center_y":.5, "center_x":.33}
+            pos_hint:{"center_y":.5, "center_x":.3}
         MDLabel:
             halign:"center"
             text:"CAR NAME"
