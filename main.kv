@@ -320,6 +320,28 @@ ScreenManager:
             FormInfo:
                 pos_hint:{"center_x":.7}
 
+    MDScreen:
+        name:"screen_info"
+        FloatLayout:
+            CheckCard:
+                size: app.size_x/20, app.size_x/27
+                pos_hint:{'center_x':.03, 'center_y':.95}
+                radius: [15]
+                on_release:
+                    manager.current = "fleet"
+                MDIcon:
+                    icon:"chevron-left"
+                    halign:"center"
+                    font_size: "55sp"
+                    theme_text_color:"Custom"
+                    text_color: 150/255, 111/255, 51/255, 1
+                    md_bg_color: 1, 1, 1, 1
+                    radius: [50]
+            MDLabel:
+                halign:"center"
+                pos_hint:{"center_y":.9, "center_x":.2}
+                text:app.car_name_info
+
 
 <Form@FloatLayout>:
 
@@ -650,6 +672,7 @@ ScreenManager:
     ripple_behavior: True
     on_release:
         print(self.id)
+        app.info_screen(self)
     FloatLayout:
         MDIcon:
             halign:"center"

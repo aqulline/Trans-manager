@@ -93,6 +93,10 @@ class MainApp(MDApp):
     cars_idle = StringProperty("0")
 
     counter = NumericProperty(0)
+
+    # screen info vars
+    car_name_info = StringProperty("")
+
     def on_start(self):
         self.add_item()
 
@@ -134,8 +138,8 @@ class MainApp(MDApp):
 
     def add_item(self):
         main = DQ.vehicle_fetch(DQ())
-        #self.total_cars = str(DQ.number_of_vehicles(DQ()))
-        #self.cars_on_road = str(DQ.on_road(DQ()))
+        # self.total_cars = str(DQ.number_of_vehicles(DQ()))
+        # self.cars_on_road = str(DQ.on_road(DQ()))
         if main:
             for i, y in main.items():
                 if self.counter <= 9:
@@ -152,6 +156,11 @@ class MainApp(MDApp):
         else:
             img = self.root.ids.nodata
             img.source = "components/icons/file-plus.jpg"
+
+    def info_screen(self, instance):
+        sm = self.root
+        sm.current = "screen_info"
+        self.car_name_info = instance.id
 
     def build(self):
         self.size_x, self.size_y = Window.size
