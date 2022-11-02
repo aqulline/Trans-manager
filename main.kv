@@ -323,6 +323,14 @@ ScreenManager:
     MDScreen:
         name:"screen_info"
         FloatLayout:
+            CashCard:
+                size: 1920, 220
+                radius:[25]
+                pos_hint:{"center_y":.95, "center_x":.5}
+                elevation:0
+                md_bg_color: .94, .94, .99, 1
+                focus_behavior: False
+                ripple_behavior: False
             CheckCard:
                 size: app.size_x/20, app.size_x/27
                 pos_hint:{'center_x':.03, 'center_y':.95}
@@ -339,8 +347,52 @@ ScreenManager:
                     radius: [50]
             MDLabel:
                 halign:"center"
-                pos_hint:{"center_y":.9, "center_x":.2}
                 text:app.car_name_info
+                font_style:"H4"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.93, "center_x":.15}
+                #theme_text_color:"Custom"
+                #text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"app.cars_name_inf"
+                font_style:"Body1"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.9, "center_x":.15}
+                #theme_text_color:"Custom"
+                #text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"Driver"
+                font_style:"H6"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.93, "center_x":.45}
+                #theme_text_color:"Custom"
+                #text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"app.cars_name_inf"
+                font_style:"Body1"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.9, "center_x":.45}
+                #theme_text_color:"Custom"
+                #text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"Current Owner"
+                font_style:"H6"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.93, "center_x":.75}
+                #theme_text_color:"Custom"
+                #text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"app.cars_name_inf"
+                font_style:"Body1"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.9, "center_x":.75}
+                #theme_text_color:"Custom"
+                #text_color:150/255, 111/255, 51/255, 1
 
 
 <Form@FloatLayout>:

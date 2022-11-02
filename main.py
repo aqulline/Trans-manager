@@ -96,6 +96,7 @@ class MainApp(MDApp):
 
     # screen info vars
     car_name_info = StringProperty("")
+    cars_name_inf = StringProperty("")
 
     def on_start(self):
         self.add_item()
