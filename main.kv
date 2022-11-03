@@ -322,8 +322,10 @@ ScreenManager:
 
     MDScreen:
         name:"screen_info"
+        #md_bg_color:239/255, 239/255, 239/255, 1
         FloatLayout:
             CashCard:
+                md_bg_color:1, 1, 1, 1
                 size: 1920, 220
                 radius:[25]
                 pos_hint:{"center_y":.95, "center_x":.5}
@@ -393,6 +395,39 @@ ScreenManager:
                 pos_hint:{"center_y":.9, "center_x":.75}
                 #theme_text_color:"Custom"
                 #text_color:150/255, 111/255, 51/255, 1
+            CashCard:
+                #md_bg_color: .9, .9, .9, 1
+                pos_hint:{"center_x":.2, "center_y":.55}
+                radius:[0]
+                elevation:2
+                MDLabel:
+                    text:"Vehicle Info"
+                    halign:"center"
+                    font_style:"H6"
+                    font_size:sp(43)
+                    font_name:'components/fonts/Gill Sans.otf'
+                    theme_text_color:"Custom"
+                    pos_hint:{"center_x":.3, "center_y":.5}
+            CashCard:
+                pos_hint:{"center_x":.5, "center_y":.55}
+                MDLabel:
+                    text:"Maintenance Info"
+                    halign:"center"
+                    font_style:"H6"
+                    font_size:sp(43)
+                    font_name:'components/fonts/Gill Sans.otf'
+                    theme_text_color:"Custom"
+                    pos_hint:{"center_x":.1, "center_y":.5}
+            CashCard:
+                pos_hint:{"center_x":.8, "center_y":.55}
+                MDLabel:
+                    text:"Fuel Utilization"
+                    halign:"center"
+                    font_style:"H6"
+                    font_size:sp(43)
+                    font_name:'components/fonts/Gill Sans.otf'
+                    theme_text_color:"Custom"
+                    pos_hint:{"center_x":.45, "center_y":.5}
 
 
 <Form@FloatLayout>:
