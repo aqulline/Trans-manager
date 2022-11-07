@@ -452,6 +452,33 @@ ScreenManager:
                 pos_hint:{"center_y":.92, "center_x":.1}
                 theme_text_color:"Custom"
                 text_color:150/255, 111/255, 51/255, 1
+
+            MDLabel:
+                halign:"center"
+                text:"jul 25"
+                font_style:"Body1"
+                size_hintL:None, None
+                font_size:sp(25)
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.98, "center_x":.5}
+                theme_text_color:"Custom"
+                text_color:150/255, 111/255, 51/255, 1
+
+            MDLabel
+                halign:"center"
+                text:"Week One"
+                font_style:"Body1"
+                font_size:sp(25)
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.8, "center_x":.1}
+                theme_text_color:"Custom"
+                text_color:150/255, 111/255, 51/255, 1
+
+            MDSeparator:
+                orientation:"vertical"
+                width:dp(2)
+                color:150/255, 111/255, 51/255, 1
+                pos_hint:{"center_y":.5, "center_x":.8}
             MDLabel:
                 halign:"center"
                 text:"November"
@@ -479,7 +506,7 @@ ScreenManager:
                 pos_hint:{"center_y":.82, "center_x":.9}
                 theme_text_color:"Custom"
                 #text_color:150/255, 111/255, 51/255, 1
-            Button_me:
+            Week:
                 pos_hint:{"center_y":.76, "center_x":.9}
                 radius: [25]
                 FloatLayout:
@@ -492,7 +519,7 @@ ScreenManager:
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
                         pos_hint:{"center_y":.5, "center_x":.5}
-            Button_me:
+            Week:
                 pos_hint:{"center_y":.68, "center_x":.9}
                 radius: [25]
                 FloatLayout:
@@ -505,7 +532,7 @@ ScreenManager:
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
                         pos_hint:{"center_y":.5, "center_x":.5}
-            Button_me:
+            Week:
                 pos_hint:{"center_y":.6, "center_x":.9}
                 radius: [25]
                 FloatLayout:
@@ -518,7 +545,7 @@ ScreenManager:
                         #font_size:sp(25)
                         font_name:'components/fonts/Gill Sans Italic.otf'
                         pos_hint:{"center_y":.5, "center_x":.5}
-            Button_me:
+            Week:
                 pos_hint:{"center_y":.52, "center_x":.9}
                 radius: [25]
                 FloatLayout:
@@ -599,11 +626,6 @@ ScreenManager:
                 MDLabel:
                     halign:"center"
                     text:"12"
-            MDSeparator:
-                orientation:"vertical"
-                width:dp(2)
-                color:150/255, 111/255, 51/255, 1
-                pos_hint:{"center_y":.5, "center_x":.8}
 
 
 <Month@MDCard>:
@@ -611,7 +633,7 @@ ScreenManager:
     radius:[5]
     size_hint:None, None
 
-<Button_me@MDCard>:
+<Week@MDCard>:
     size: 300, 50
     md_bg_color: 150/255, 111/255, 51/255, 1
     size_hint:None, None
