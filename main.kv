@@ -446,14 +446,111 @@ ScreenManager:
 
             MDLabel:
                 halign:"center"
-                text:"Dashboard"
-                font_style:"H3"
+                text:"Fuel Utilization"
+                font_style:"H4"
                 font_name:'components/fonts/Gill Sans.otf'
                 pos_hint:{"center_y":.92, "center_x":.1}
                 theme_text_color:"Custom"
                 text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"November"
+                font_style:"Body1"
+                font_size:sp(28)
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.92, "center_x":.9}
+                theme_text_color:"Custom"
+                text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"9/10/2022"
+                font_style:"Body1"
+                font_size:sp(15)
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.9, "center_x":.9}
+                theme_text_color:"Custom"
+                text_color:150/255, 111/255, 51/255, 1
+            MDLabel:
+                halign:"center"
+                text:"Weeks"
+                font_style:"Body1"
+                font_size:sp(23)
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.82, "center_x":.9}
+                theme_text_color:"Custom"
+                #text_color:150/255, 111/255, 51/255, 1
+            Button_me:
+                pos_hint:{"center_y":.76, "center_x":.9}
+                radius: [25]
+                FloatLayout:
+                    MDLabel:
+                        halign:"center"
+                        text:"Week One"
+                        font_style:"H6"
+                        theme_text_color:"Custom"
+                        text_color:1, 1, 1, 1
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.5, "center_x":.5}
+            Button_me:
+                pos_hint:{"center_y":.68, "center_x":.9}
+                radius: [25]
+                FloatLayout:
+                    MDLabel:
+                        halign:"center"
+                        text:"Week Two"
+                        font_style:"H6"
+                        theme_text_color:"Custom"
+                        text_color:1, 1, 1, 1
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.5, "center_x":.5}
+            Button_me:
+                pos_hint:{"center_y":.6, "center_x":.9}
+                radius: [25]
+                FloatLayout:
+                    MDLabel:
+                        halign:"center"
+                        text:"Week Three"
+                        font_style:"H6"
+                        theme_text_color:"Custom"
+                        text_color:1, 1, 1, 1
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.5, "center_x":.5}
+            Button_me:
+                pos_hint:{"center_y":.52, "center_x":.9}
+                radius: [25]
+                FloatLayout:
+                    MDLabel:
+                        halign:"center"
+                        text:"Week Four"
+                        font_style:"H6"
+                        theme_text_color:"Custom"
+                        text_color:1, 1, 1, 1
+                        #font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans Italic.otf'
+                        pos_hint:{"center_y":.5, "center_x":.5}
+            MDLabel:
+                halign:"center"
+                text:"Months"
+                font_style:"Body1"
+                font_size:sp(23)
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_y":.5, "center_x":.9}
+                theme_text_color:"Custom"
+            MDIconButton:
+                icon:""
+            MDSeparator:
+                orientation:"vertical"
+                width:dp(2)
+                color:150/255, 111/255, 51/255, 1
+                pos_hint:{"center_y":.5, "center_x":.8}
 
-
+<Button_me@MDCard>:
+    size: 300, 50
+    md_bg_color: 150/255, 111/255, 51/255, 1
+    size_hint:None, None
 
 <Form@FloatLayout>:
 
