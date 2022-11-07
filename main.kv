@@ -537,15 +537,79 @@ ScreenManager:
                 font_style:"Body1"
                 font_size:sp(23)
                 font_name:'components/fonts/Gill Sans.otf'
-                pos_hint:{"center_y":.5, "center_x":.9}
+                pos_hint:{"center_y":.45, "center_x":.9}
                 theme_text_color:"Custom"
-            MDIconButton:
-                icon:""
+            Month:
+                pos_hint:{"center_y":.4, "center_x":.825}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-1"
+            Month:
+                pos_hint:{"center_y":.4, "center_x":.873}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-2"
+            Month:
+                pos_hint:{"center_y":.4, "center_x":.92}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-3"
+            Month:
+                pos_hint:{"center_y":.4, "center_x":.97}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-4"
+            Month:
+                pos_hint:{"center_y":.3, "center_x":.825}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-5"
+            Month:
+                pos_hint:{"center_y":.3, "center_x":.873}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-6"
+            Month:
+                pos_hint:{"center_y":.3, "center_x":.92}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-7"
+            Month:
+                pos_hint:{"center_y":.3, "center_x":.97}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-8"
+            Month:
+                pos_hint:{"center_y":.2, "center_x":.825}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-9"
+            Month:
+                pos_hint:{"center_y":.2, "center_x":.873}
+                MDIcon:
+                    halign:"center"
+                    icon:"numeric-10"
+            Month:
+                pos_hint:{"center_y":.2, "center_x":.92}
+                MDLabel:
+                    halign:"center"
+                    text:"11"
+            Month:
+                pos_hint:{"center_y":.2, "center_x":.97}
+                MDLabel:
+                    halign:"center"
+                    text:"12"
             MDSeparator:
                 orientation:"vertical"
                 width:dp(2)
                 color:150/255, 111/255, 51/255, 1
                 pos_hint:{"center_y":.5, "center_x":.8}
+
+
+<Month@MDCard>:
+    size: 70, 70
+    radius:[5]
+    size_hint:None, None
 
 <Button_me@MDCard>:
     size: 300, 50
