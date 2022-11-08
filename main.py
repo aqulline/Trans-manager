@@ -1,11 +1,8 @@
-import re
-
 from kivy.properties import NumericProperty, StringProperty, ListProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivymd.toast import toast
 from kivymd.uix.card import MDCard
-from kivymd.uix.card import MDSeparator
 
 from database import DataBase as DB
 from database_query import DataQuery as DQ

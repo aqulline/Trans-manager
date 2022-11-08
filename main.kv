@@ -453,30 +453,190 @@ ScreenManager:
                 theme_text_color:"Custom"
                 text_color:150/255, 111/255, 51/255, 1
 
-            MDLabel:
-                halign:"center"
-                text:"jul 25"
-                font_style:"Body1"
-                size_hintL:None, None
-                font_size:sp(25)
-                font_name:'components/fonts/Gill Sans.otf'
-                pos_hint:{"center_y":.98, "center_x":.5}
-                theme_text_color:"Custom"
-                text_color:150/255, 111/255, 51/255, 1
-
-            MDLabel
-                halign:"center"
-                text:"Week One"
-                font_style:"Body1"
-                font_size:sp(25)
-                font_name:'components/fonts/Gill Sans.otf'
-                pos_hint:{"center_y":.8, "center_x":.1}
-                theme_text_color:"Custom"
-                text_color:150/255, 111/255, 51/255, 1
-
             DataView:
                 radius:[25]
-                pos_hint:{"center_y":.45, "center_x":.4}
+                pos_hint:{"center_y":.5, "center_x":.4}
+                FloatLayout:
+                    MDLabel:
+                        halign:"center"
+                        text:"Week One"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.92, "center_x":.1}
+                        theme_text_color:"Custom"
+                        text_color:150/255, 111/255, 51/255, 1
+                    MDLabel:
+                        halign:"center"
+                        text:"jul 25"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.94, "center_x":.5}
+                        theme_text_color:"Custom"
+                        text_color:150/255, 111/255, 51/255, 1
+                    MDIconButton:
+                        icon:"book-edit"
+                        pos_hint:{"center_y":.92, "center_x":.95}
+                    MDSeparator:
+                        color:150/255, 111/255, 51/255, 1
+                        pos_hint:{"center_y":.87, "center_x":.5}
+                        width:dp(2)
+                    MDLabel:
+                        halign:"center"
+                        text:"Fuel Issued"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.8, "center_x":.1}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"60/ltr"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.73, "center_x":.1}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"Fuel Used"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.8, "center_x":.3}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"69.71/ltr"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.73, "center_x":.3}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"Reading (KM)"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.8, "center_x":.75}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"185009/km"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.73, "center_x":.75}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"Last (KM)"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.8, "center_x":.9}
+                        theme_text_color:"Custom"
+                    MDSeparator:
+                        pos_hint:{"center_y":.5,"center_x":.5}
+                        orientation:"vertical"
+                        color:150/255, 111/255, 51/255, 1
+                        size_hint:None, .5
+                    MDSeparator:
+                        pos_hint:{"center_y":.6,"center_x":.5}
+                        size_hint:.5, None
+                        color:150/255, 111/255, 51/255, 1
+                    MDLabel:
+                        halign:"center"
+                        text:"185009/km"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.73, "center_x":.9}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"Travel (KM)"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.4, "center_x":.1}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"488/km"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.33, "center_x":.1}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"Consumption Per (KM)"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.4, "center_x":.3}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"7/km"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.33, "center_x":.3}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"Fuel Price"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.4, "center_x":.75}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"3.220.00/TZS"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.33, "center_x":.75}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"Amount"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(25)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.4, "center_x":.9}
+                        theme_text_color:"Custom"
+                    MDLabel:
+                        halign:"center"
+                        text:"199,320.00/TZS"
+                        font_style:"Body1"
+                        size_hintL:None, None
+                        font_size:sp(20)
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_y":.33, "center_x":.9}
+                        theme_text_color:"Custom"
 
             MDSeparator:
                 orientation:"vertical"
@@ -632,7 +792,7 @@ ScreenManager:
                     text:"12"
 
 <DataView@MDCard>:
-    size: 1000, 600
+    size: 1200, 600
     size_hint:None, None
 
 <Month@MDCard>:
