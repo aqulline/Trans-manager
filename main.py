@@ -96,6 +96,16 @@ class MainApp(MDApp):
     car_name_info = StringProperty("")
     cars_name_inf = StringProperty("")
 
+    # fuel calculation
+    last_km = StringProperty("")
+    reading_km = StringProperty("")
+    fuel_prices = StringProperty("")
+    consumption_per = StringProperty("")
+    fuel_issued = StringProperty("")
+    amount_f = StringProperty("")  # calc = fuel_issued * fuel_prices
+    travel_km = StringProperty("")  # calc = reading_km - last_km
+    used_fuel = StringProperty("")  # calc = travel_km / consumption_per
+
     def on_start(self):
         self.add_item()
 
