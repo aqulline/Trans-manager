@@ -97,14 +97,15 @@ class MainApp(MDApp):
     cars_name_inf = StringProperty("")
 
     # fuel calculation
+    car_id_temp = StringProperty("")
     last_km = StringProperty("")
     reading_km = StringProperty("")
     fuel_prices = StringProperty("")
     consumption_per = StringProperty("")
     fuel_issued = StringProperty("")
-    amount_f = StringProperty("")  # calc = fuel_issued * fuel_prices
-    travel_km = StringProperty("")  # calc = reading_km - last_km
-    used_fuel = StringProperty("")  # calc = travel_km / consumption_per
+    amount_f = StringProperty("0")  # calc = fuel_issued * fuel_prices
+    travel_km = StringProperty("0")  # calc = reading_km - last_km
+    used_fuel = StringProperty("0")  # calc = travel_km / consumption_per
 
     def on_start(self):
         self.add_item()
@@ -144,6 +145,37 @@ class MainApp(MDApp):
             toast("Please fill all inputs")
 
             # DATA DISPLAY CAR FUNCTIONS
+
+    def car_fuel_validate(self):
+        self.amount_f = str(int(self.fuel_issued) - int(self.fuel_prices))
+        self.travel_km = str(int(self.reading_km) - int(self.last_km))
+        self.used_fuel = str(int(self.travel_km) - int(self.consumption_per))
+
+        self.car_fuel_register(self.car_id_temp, self.last_km, self.reading_km, self.fuel_prices, self.consumption_per, self.fuel_issued, self.amount_f, self.travel_km, self.used_fuel)
+
+    def car_fuel_register(self, carId, last_km, reading_km, fuel_price, consumption_per, fuel_issued, amount_f, travel_km, used_fuel):
+        if carId != "" and last_km != "" and reading_km != "" and fuel_price != "" and consumption_per != "" and fuel_issued != "" \
+                and amount_f != "" and travel_km != "" and used_fuel != "":
+
+            DB.fuel_json(DB(), carId, last_km, reading_km,fuel_price, consumption_per, fuel_issued, amount_f, travel_km, used_fuel)
+
+    def realtime_calc_cost(self, inst):
+        if inst != "":
+            self.amount_f = str(int(self.fuel_prices) * int(inst))
+        elif inst == "":
+            self.amount_f = "0"
+
+    def realtime_calc_travel(self, inst):
+        if inst != "":
+            self.amount_f = str(int(self.fuel_prices) * int(inst))
+        elif inst == "":
+            self.amount_f = "0"
+            
+    def realtime_calc_used(self, inst):
+        if inst != "":
+            self.amount_f = str(int(self.fuel_prices) * int(inst))
+        elif inst == "":
+            self.amount_f = "0"
 
     def add_item(self):
         main = DQ.vehicle_fetch(DQ())

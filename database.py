@@ -33,8 +33,22 @@ class DataBase:
 
         self.car_registers(data)
 
+    def fuel_json(self, carId, last_km, reading_km, fuel_price, consumption, fuel_issued, amount, travel_km, fuel_used):
+        data = {
+            "last_km": last_km,
+            "reading_km": reading_km,
+            "fuel_price": fuel_price,
+            "consumption": consumption,
+            "fuel_issued": fuel_issued,
+            "amount": amount,
+            "travel_km": travel_km,
+            "fuel_used": fuel_used
+        }
+
+        self.car_fuel(carId, data)
+
     # data model = vehicles.carID.fuel_info.20229.w1,w2,w3,w4
-    def car_fuel(self, data):
+    def car_fuel(self, car_id, data):
         self.index_fill()
         if True:
             import firebase_admin
@@ -46,7 +60,7 @@ class DataBase:
                 initialize_app(cred, {
                     'databaseURL': 'https://osg-fleet-management-default-rtdb.firebaseio.com/'})
 
-            ref = db.reference('Vehicles').child(data["car_id"]).child("fuel_info").child(self.year_id).child(
+            ref = db.reference('Vehicles').child(car_id).child("fuel_info").child(self.year_id).child(
                 self.week_no)
             ref.set(data)
 
@@ -104,4 +118,4 @@ data = {
     "driver": "50000"
 }
 
-DataBase.car_fuel(DataBase(), data)
+# DataBase.car_fuel(DataBase(), data)

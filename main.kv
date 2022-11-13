@@ -865,7 +865,7 @@ ScreenManager:
                 text_color:150/255, 111/255, 51/255, 1
             MDLabel:
                 halign:"center"
-                text:"0/tsh"
+                text:app.amount_f+"/tsh"
                 font_style:"H6"
                 font_name:'components/fonts/Gill Sans.otf'
                 pos_hint:{"center_y":.25, "center_x":.35}
@@ -873,7 +873,7 @@ ScreenManager:
                 text_color: .5, .5, .5, 1
             MDLabel:
                 halign:"center"
-                text:"0km"
+                text:app.travel_km+"km"
                 font_style:"H6"
                 font_name:'components/fonts/Gill Sans.otf'
                 pos_hint:{"center_y":.2, "center_x":.35}
@@ -881,7 +881,7 @@ ScreenManager:
                 text_color: .5, .5, .5, 1
             MDLabel:
                 halign:"center"
-                text:"0.0/TSH"
+                text:app.used_fuel+"/TSH"
                 font_style:"H6"
                 font_name:'components/fonts/Gill Sans.otf'
                 pos_hint:{"center_y":.15, "center_x":.35}
@@ -920,9 +920,11 @@ ScreenManager:
         #fill_color: 0, 0, 0, .4
         size_hint: .1, .05
         pos_hint:{'center_x':.42, 'center_y':.809}
-        hint_text:"Engine No"
+        hint_text:"Last Km"
         #text_color: 1, 1, 1, 1
         font_size: dp(25)
+        on_text:
+            app.last_km = lk.text
 
     # V.Registration
 
@@ -939,9 +941,11 @@ ScreenManager:
         #fill_color: 0, 0, 0, .4
         size_hint: .1, .05
         pos_hint:{'center_x':.42, 'center_y':.709}
-        hint_text:"E.Capacity"
+        hint_text:"Reading KM"
         #text_color: 1, 1, 1, 1
         font_size: dp(25)
+        on_text:
+            app.reading_km = rk.text
 
     # V.Year of make
 
@@ -958,9 +962,11 @@ ScreenManager:
         #fill_color: 0, 0, 0, .4
         size_hint: .1, .05
         pos_hint:{'center_x':.42, 'center_y':.609}
-        hint_text:"F.Capacity"
+        hint_text:"Fuel Price"
         #text_color: 1, 1, 1, 1
         font_size: dp(25)
+        on_text:
+            app.fuel_prices = fp.text
 
     # V.Purchased
 
@@ -977,9 +983,11 @@ ScreenManager:
         #fill_color: 0, 0, 0, .4
         size_hint: .1, .05
         pos_hint:{'center_x':.42, 'center_y':.509}
-        hint_text:"F.Type"
+        hint_text:"Consumption"
         #text_color: 1, 1, 1, 1
         font_size: dp(25)
+        on_text:
+            app.consumption_per = cn.text
 
     # V.User
 
@@ -1000,9 +1008,12 @@ ScreenManager:
         #fill_color: 0, 0, 0, .4
         size_hint: .1, .05
         pos_hint:{'center_x':.42, 'center_y':.809}
-        hint_text:"Engine No"
+        hint_text:"Fuel issued"
         #text_color: 1, 1, 1, 1
         font_size: dp(25)
+        on_text:
+            app.fuel_issued = fi.text
+            app.realtime_calc_cost(fi.text)
 
 
 
