@@ -49,7 +49,7 @@ class MainApp(MDApp):
     engine_no = StringProperty("")
     engine_capacity = StringProperty("")
     fuel_capacity = StringProperty("")
-    fuel_type = StringProperty("")
+    fuel_type1 = StringProperty("")
     chassis_no = StringProperty("")
     car_body = StringProperty("")
 
@@ -151,13 +151,21 @@ class MainApp(MDApp):
         self.travel_km = str(int(self.reading_km) - int(self.last_km))
         self.used_fuel = str(int(self.travel_km) - int(self.consumption_per))
 
-        self.car_fuel_register(self.car_id_temp, self.last_km, self.reading_km, self.fuel_prices, self.consumption_per, self.fuel_issued, self.amount_f, self.travel_km, self.used_fuel)
+        self.car_fuel_register(self.car_id_temp, self.last_km, self.reading_km, self.fuel_prices, self.consumption_per,
+                               self.fuel_issued, self.amount_f, self.travel_km, self.used_fuel)
 
-    def car_fuel_register(self, carId, last_km, reading_km, fuel_price, consumption_per, fuel_issued, amount_f, travel_km, used_fuel):
+        print(self.car_id_temp, self.last_km, self.reading_km, self.fuel_prices, self.consumption_per,
+              self.fuel_issued, self.amount_f, self.travel_km, self.used_fuel)
+
+    def car_fuel_register(self, carId, last_km, reading_km, fuel_price, consumption_per, fuel_issued, amount_f,
+                          travel_km, used_fuel):
         if carId != "" and last_km != "" and reading_km != "" and fuel_price != "" and consumption_per != "" and fuel_issued != "" \
                 and amount_f != "" and travel_km != "" and used_fuel != "":
 
-            DB.fuel_json(DB(), carId, last_km, reading_km,fuel_price, consumption_per, fuel_issued, amount_f, travel_km, used_fuel)
+            DB.fuel_json(DB(), carId, last_km, reading_km, fuel_price, consumption_per, fuel_issued, amount_f,
+                         travel_km, used_fuel)
+        else:
+            toast("Fix tha shit")
 
     def realtime_calc_cost(self, inst):
         if inst != "":
@@ -170,7 +178,7 @@ class MainApp(MDApp):
             self.amount_f = str(int(self.fuel_prices) * int(inst))
         elif inst == "":
             self.amount_f = "0"
-            
+
     def realtime_calc_used(self, inst):
         if inst != "":
             self.amount_f = str(int(self.fuel_prices) * int(inst))

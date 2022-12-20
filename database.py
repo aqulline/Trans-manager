@@ -112,10 +112,10 @@ class DataBase:
         return str(datetime.datetime.now()).split(" ")[0]
 
 
-data = {
-    "car_id": "STK 4052",
-    "price": "25000",
-    "driver": "50000"
-}
+#data = {
+#    "car_id": "STK 4052",
+#    "price": "25000",
+#    "driver": "50000"
+#}
 
-# DataBase.car_fuel(DataBase(), data)
+#DataBase.car_fuel(DataBase(), "STK 4052", data)
