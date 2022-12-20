@@ -459,7 +459,7 @@ ScreenManager:
                 FloatLayout:
                     MDLabel:
                         halign:"center"
-                        text:"Week One"
+                        text:app.week_name
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(25)
@@ -469,7 +469,7 @@ ScreenManager:
                         text_color:150/255, 111/255, 51/255, 1
                     MDLabel:
                         halign:"center"
-                        text:"jul 25"
+                        text:app.date
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(25)
@@ -497,7 +497,7 @@ ScreenManager:
                         theme_text_color:"Custom"
                     MDLabel:
                         halign:"center"
-                        text:"60/ltr"
+                        text:app.fuel_issued+"/ltr"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -515,7 +515,7 @@ ScreenManager:
                         theme_text_color:"Custom"
                     MDLabel:
                         halign:"center"
-                        text:"69.71/ltr"
+                        text:fuel_used+"/ltr"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -533,7 +533,7 @@ ScreenManager:
                         theme_text_color:"Custom"
                     MDLabel:
                         halign:"center"
-                        text:"185009/km"
+                        text:app.reading_km+"/km"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -560,7 +560,7 @@ ScreenManager:
                         color:150/255, 111/255, 51/255, 1
                     MDLabel:
                         halign:"center"
-                        text:"185009/km"
+                        text:app.last_km+"/km"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -578,7 +578,7 @@ ScreenManager:
                         theme_text_color:"Custom"
                     MDLabel:
                         halign:"center"
-                        text:"488/km"
+                        text:app.travel_km+"/km"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -596,7 +596,7 @@ ScreenManager:
                         theme_text_color:"Custom"
                     MDLabel:
                         halign:"center"
-                        text:"7/km"
+                        text:app.consumption_per+"/km"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -614,7 +614,7 @@ ScreenManager:
                         theme_text_color:"Custom"
                     MDLabel:
                         halign:"center"
-                        text:"3.220.00/TZS"
+                        text:app.fuel_prices+"/TZS"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -632,7 +632,7 @@ ScreenManager:
                         theme_text_color:"Custom"
                     MDLabel:
                         halign:"center"
-                        text:"199,320.00/TZS"
+                        text:app.amount_f+"/TZS"
                         font_style:"Body1"
                         size_hintL:None, None
                         font_size:sp(20)
@@ -647,7 +647,7 @@ ScreenManager:
                 pos_hint:{"center_y":.5, "center_x":.8}
             MDLabel:
                 halign:"center"
-                text:"November"
+                text:app.month_name
                 font_style:"Body1"
                 font_size:sp(28)
                 font_name:'components/fonts/Gill Sans.otf'
@@ -656,7 +656,7 @@ ScreenManager:
                 text_color:150/255, 111/255, 51/255, 1
             MDLabel:
                 halign:"center"
-                text:"9/10/2022"
+                text:app.full_fmt
                 font_style:"Body1"
                 font_size:sp(15)
                 font_name:'components/fonts/Gill Sans.otf'

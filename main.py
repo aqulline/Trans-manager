@@ -31,6 +31,10 @@ class CarCard(MDCard):
 class MainApp(MDApp):
     # App
     size_x, size_y = NumericProperty(0), NumericProperty(0)
+    date = StringProperty("")
+    full_fmt = StringProperty("")
+    month_name = StringProperty("")
+    week_name = StringProperty("")
 
     # Dummy
 
@@ -187,6 +191,11 @@ class MainApp(MDApp):
 
     def add_item(self):
         main = DQ.vehicle_fetch(DQ())
+        dates = DB.date_format(DB())
+        self.date = dates[0]
+        self.full_fmt = dates[1]
+        self.month_name = dates[2]
+        self.week_name = dates[3]
         # self.total_cars = str(DQ.number_of_vehicles(DQ()))
         # self.cars_on_road = str(DQ.on_road(DQ()))
         if main:
@@ -205,6 +214,29 @@ class MainApp(MDApp):
         else:
             img = self.root.ids.nodata
             img.source = "components/icons/file-plus.jpg"
+
+    def fuel_info(self, car_id, year_id, week_no):
+        data = DQ.fuel_data(DQ(), car_id, year_id, week_no)
+        if data:
+            if data == "None":
+                self.fuel_issued = "0"
+                self.fuel_used = "0"
+                self.reading_km = "0"
+                self.last_km = "0"
+                self.travel_km = "0"
+                self.consumption_per = "0"
+                self.fuel_prices = "0"
+                self.amount_f = "0"
+            else:
+                self.fuel_issued = data['fuel_issued']
+                self.fuel_used = data['fuel_used']
+                self.reading_km = data['reading_km']
+                self.last_km = data['last_km']
+                self.travel_km = data['travel_km']
+                self.consumption_per = data['consumption']
+                self.fuel_prices = data['fuel_price']
+                self.amount_f = data['amount']
+
 
     def info_screen(self, instance):
         sm = self.root

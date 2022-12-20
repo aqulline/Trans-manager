@@ -96,7 +96,19 @@ class DataBase:
         month_name = self.mnth_name[month_update]
         self.week_no = self.week_number(int(self.day))
         date_frmt = f"{month_name} {str(self.day)}"
-        return date_frmt
+        full_frmt = f"{self.day}/{month}/{year}"
+        week_name = ""
+
+        if self.week_no == "w1":
+            week_name = "Week One"
+        if self.week_no == "w2":
+            week_name = "Week Two"
+        if self.week_no == "w3":
+            week_name = "Week Three"
+        if self.week_no == "w4":
+            week_name = "Week Four"
+
+        return [date_frmt, full_frmt, month_name, week_name]
 
     def week_number(self, date):
         if 1 <= date <= 7:
@@ -119,3 +131,4 @@ class DataBase:
 #}
 
 #DataBase.car_fuel(DataBase(), "STK 4052", data)
+#DataBase.date_format(DataBase())
