@@ -7,6 +7,8 @@ from kivymd.uix.card import MDCard
 from database import DataBase as DB
 from database_query import DataQuery as DQ
 
+import threading
+
 Window.size = (1920, 1016)
 Window.minimum_width, Window.minimum_height = Window.size
 
@@ -113,7 +115,7 @@ class MainApp(MDApp):
     used_fuel = StringProperty("0")  # calc = travel_km / consumption_per
 
     def on_start(self):
-        self.add_item()
+        self.load_item()
 
     # DATA INPUTS FUNCTIONS
     def v_status(self, instance):
@@ -191,7 +193,34 @@ class MainApp(MDApp):
         elif inst == "":
             self.amount_f = "0"
 
-    def add_item(self):
+    def load_fuel(self):
+        thread = threading.Thread(target=self.fuel_fill)
+        thread.start()
+
+        mname = DB.date_format(DB())[7]
+
+        mnth = self.root.ids
+
+        mnth["mon" + mname].md_bg_color = 150/255, 111/255, 51/255, 1
+
+    def mon_clr(self, num):
+        for i in range(1, 13):
+            if str(i) == num:
+                mnth = self.root.ids
+
+                mnth["mon" + str(i)].md_bg_color = 150 / 255, 111 / 255, 51 / 255, 1
+            else:
+                mnth = self.root.ids
+
+                mnth["mon" + str(i)].md_bg_color = 1, 1, 1, 1
+
+
+
+    def load_item(self):
+        thread = threading.Thread(target=self.add_item)
+        thread.start()
+
+    def add_item(self, **kwargs):
         main = DQ.vehicle_fetch(DQ())
         dates = DB.date_format(DB())
         self.date = dates[0]
@@ -218,13 +247,14 @@ class MainApp(MDApp):
             img = self.root.ids.nodata
             img.source = "components/icons/file-plus.jpg"
 
-    def fuel_fill(self):
+    def fuel_fill(self, **kwargs):
         car_id = self.car_id_temp
         year_id = DB.date_format(DB())[4]
         week_no = DB.date_format(DB())[5]
 
         self.fuel_info(car_id, year_id, week_no)
         toast("Refreshed!")
+
 
     def fuel_info(self, car_id, year_id, week_no):
         data = DQ.fuel_data(DQ(), car_id, year_id, week_no)

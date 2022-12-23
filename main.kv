@@ -422,6 +422,7 @@ ScreenManager:
                 pos_hint:{"center_x":.8, "center_y":.55}
                 on_release:
                     manager.current = "fuel"
+                    app.load_fuel()
                 MDLabel:
                     text:"Fuel Utilization"
                     halign:"center"
@@ -645,7 +646,7 @@ ScreenManager:
                         user_font_size:"35sp"
                         pos_hint:{"center_y":.1, "center_x":.5}
                         on_release:
-                            app.fuel_fill()
+                            app.load_fuel()
 
             MDSeparator:
                 orientation:"vertical"
@@ -740,62 +741,98 @@ ScreenManager:
                 pos_hint:{"center_y":.45, "center_x":.9}
                 theme_text_color:"Custom"
             Month:
+                id:mon1
                 pos_hint:{"center_y":.4, "center_x":.825}
+                on_release:
+                    app.mon_clr("1")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-1"
             Month:
+                id:mon2
                 pos_hint:{"center_y":.4, "center_x":.873}
+                on_release:
+                    app.mon_clr("2")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-2"
             Month:
+                id:mon3
                 pos_hint:{"center_y":.4, "center_x":.92}
+                on_release:
+                    app.mon_clr("3")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-3"
             Month:
+                id:mon4
                 pos_hint:{"center_y":.4, "center_x":.97}
+                on_release:
+                    app.mon_clr("4")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-4"
             Month:
+                id:mon5
                 pos_hint:{"center_y":.3, "center_x":.825}
+                on_release:
+                    app.mon_clr("5")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-5"
             Month:
+                id:mon6
                 pos_hint:{"center_y":.3, "center_x":.873}
+                on_release:
+                    app.mon_clr("6")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-6"
             Month:
+                id:mon7
                 pos_hint:{"center_y":.3, "center_x":.92}
+                on_release:
+                    app.mon_clr("7")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-7"
             Month:
+                id:mon8
                 pos_hint:{"center_y":.3, "center_x":.97}
+                on_release:
+                    app.mon_clr("8")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-8"
             Month:
+                id:mon9
                 pos_hint:{"center_y":.2, "center_x":.825}
+                on_release:
+                    app.mon_clr("9")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-9"
             Month:
+                id:mon10
                 pos_hint:{"center_y":.2, "center_x":.873}
+                on_release:
+                    app.mon_clr("10")
                 MDIcon:
                     halign:"center"
                     icon:"numeric-10"
             Month:
+                id:mon11
                 pos_hint:{"center_y":.2, "center_x":.92}
+                on_release:
+                    app.mon_clr("11")
                 MDLabel:
                     halign:"center"
                     text:"11"
             Month:
+                id:mon12
                 pos_hint:{"center_y":.2, "center_x":.97}
+                on_release:
+                    app.mon_clr("12")
                 MDLabel:
                     halign:"center"
                     text:"12"
