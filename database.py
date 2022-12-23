@@ -96,8 +96,10 @@ class DataBase:
         month_name = self.mnth_name[month_update]
         self.week_no = self.week_number(int(self.day))
         date_frmt = f"{month_name} {str(self.day)}"
+        month_frmt = f"{month_name} {str(year)}"
         full_frmt = f"{self.day}/{month}/{year}"
         week_name = ""
+        self.year_id = year + month
 
         if self.week_no == "w1":
             week_name = "Week One"
@@ -108,7 +110,7 @@ class DataBase:
         if self.week_no == "w4":
             week_name = "Week Four"
 
-        return [date_frmt, full_frmt, month_name, week_name]
+        return [date_frmt, full_frmt, month_name, week_name, self.year_id, self.week_no, month_frmt]
 
     def week_number(self, date):
         if 1 <= date <= 7:

@@ -60,8 +60,8 @@ class DataQuery:
 
 # DataQuery.on_road(DataQuery())
 
-x = DataQuery.fuel_data(DataQuery(), "STK 4052", "202212", "w3")
-print(x)
+#x = DataQuery.fuel_data(DataQuery(), "STK 4052", "202212", "w3")
+#print(x)
 
-for i, y in x.items():
-    print(i,y)
+#for i, y in x.items():
+#    print(i,y)

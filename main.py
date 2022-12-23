@@ -32,6 +32,7 @@ class MainApp(MDApp):
     # App
     size_x, size_y = NumericProperty(0), NumericProperty(0)
     date = StringProperty("")
+    months = StringProperty("")
     full_fmt = StringProperty("")
     month_name = StringProperty("")
     week_name = StringProperty("")
@@ -65,22 +66,22 @@ class MainApp(MDApp):
     total_maintenance = StringProperty("")
 
     # FUEL-UTILIZATION
-    starting_km = StringProperty("")
-    ending_km = StringProperty("")
-    km_travel = StringProperty("")
-    consumption_km = StringProperty("")
-    fuel_given = StringProperty("")
-    total_given = StringProperty("")
-    fuel_used = StringProperty("")
-    total_used = StringProperty("")
-    fuel_price = StringProperty("")
-    fuel_amount = StringProperty("")
-    total_amount = StringProperty("")
+    starting_km = StringProperty("0")
+    ending_km = StringProperty("0")
+    km_travel = StringProperty("0")
+    consumption_km = StringProperty("0")
+    fuel_given = StringProperty("0")
+    total_given = StringProperty("0")
+    fuel_used = StringProperty("0")
+    total_used = StringProperty("0")
+    fuel_price = StringProperty("0")
+    fuel_amount = StringProperty("0")
+    total_amount = StringProperty("0")
     fuel_type = StringProperty("")
-    petrol_price = StringProperty("")
-    diesel_price = StringProperty("")
-    total_petrol = StringProperty("")
-    total_diesel = StringProperty("")
+    petrol_price = StringProperty("0")
+    diesel_price = StringProperty("0")
+    total_petrol = StringProperty("0")
+    total_diesel = StringProperty("0")
 
     # SAFARI
     location_origin = StringProperty("")
@@ -101,12 +102,12 @@ class MainApp(MDApp):
     cars_name_inf = StringProperty("")
 
     # fuel calculation
-    car_id_temp = StringProperty("")
-    last_km = StringProperty("")
-    reading_km = StringProperty("")
-    fuel_prices = StringProperty("")
-    consumption_per = StringProperty("")
-    fuel_issued = StringProperty("")
+    car_id_temp = StringProperty("0")
+    last_km = StringProperty("0")
+    reading_km = StringProperty("0")
+    fuel_prices = StringProperty("0")
+    consumption_per = StringProperty("0")
+    fuel_issued = StringProperty("0")
     amount_f = StringProperty("0")  # calc = fuel_issued * fuel_prices
     travel_km = StringProperty("0")  # calc = reading_km - last_km
     used_fuel = StringProperty("0")  # calc = travel_km / consumption_per
@@ -154,6 +155,7 @@ class MainApp(MDApp):
         self.amount_f = str(int(self.fuel_issued) - int(self.fuel_prices))
         self.travel_km = str(int(self.reading_km) - int(self.last_km))
         self.used_fuel = str(int(self.travel_km) - int(self.consumption_per))
+        self.fuel_used = self.used_fuel
 
         self.car_fuel_register(self.car_id_temp, self.last_km, self.reading_km, self.fuel_prices, self.consumption_per,
                                self.fuel_issued, self.amount_f, self.travel_km, self.used_fuel)
@@ -196,6 +198,7 @@ class MainApp(MDApp):
         self.full_fmt = dates[1]
         self.month_name = dates[2]
         self.week_name = dates[3]
+        self.months = dates[6]
         # self.total_cars = str(DQ.number_of_vehicles(DQ()))
         # self.cars_on_road = str(DQ.on_road(DQ()))
         if main:
@@ -215,6 +218,14 @@ class MainApp(MDApp):
             img = self.root.ids.nodata
             img.source = "components/icons/file-plus.jpg"
 
+    def fuel_fill(self):
+        car_id = self.car_id_temp
+        year_id = DB.date_format(DB())[4]
+        week_no = DB.date_format(DB())[5]
+
+        self.fuel_info(car_id, year_id, week_no)
+        toast("Refreshed!")
+
     def fuel_info(self, car_id, year_id, week_no):
         data = DQ.fuel_data(DQ(), car_id, year_id, week_no)
         if data:
@@ -227,6 +238,7 @@ class MainApp(MDApp):
                 self.consumption_per = "0"
                 self.fuel_prices = "0"
                 self.amount_f = "0"
+                toast("None!")
             else:
                 self.fuel_issued = data['fuel_issued']
                 self.fuel_used = data['fuel_used']
@@ -236,7 +248,7 @@ class MainApp(MDApp):
                 self.consumption_per = data['consumption']
                 self.fuel_prices = data['fuel_price']
                 self.amount_f = data['amount']
-
+                toast("Present!")
 
     def info_screen(self, instance):
         sm = self.root
