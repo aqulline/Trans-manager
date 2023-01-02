@@ -110,7 +110,7 @@ class DataBase:
         if self.week_no == "w4":
             week_name = "Week Four"
 
-        return [date_frmt, full_frmt, month_name, week_name, self.year_id, self.week_no, month_frmt, month]
+        return [date_frmt, full_frmt, month_name, week_name, self.year_id, self.week_no, month_frmt, month, year]
 
     def week_number(self, date):
         if 1 <= date <= 7:

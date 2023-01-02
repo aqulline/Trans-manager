@@ -39,6 +39,9 @@ class MainApp(MDApp):
     month_name = StringProperty("")
     week_name = StringProperty("")
 
+    month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
     # Dummy
 
     vars = []
@@ -197,24 +200,50 @@ class MainApp(MDApp):
         thread = threading.Thread(target=self.fuel_fill)
         thread.start()
 
-        mname = DB.date_format(DB())[7]
-
-        mnth = self.root.ids
-
-        mnth["mon" + mname].md_bg_color = 150/255, 111/255, 51/255, 1
-
     def mon_clr(self, num):
         for i in range(1, 13):
             if str(i) == num:
                 mnth = self.root.ids
 
                 mnth["mon" + str(i)].md_bg_color = 150 / 255, 111 / 255, 51 / 255, 1
+
+                self.months = f"{self.month_names[i - 1]} {DB.date_format(DB())[8]}"
             else:
                 mnth = self.root.ids
 
                 mnth["mon" + str(i)].md_bg_color = 1, 1, 1, 1
 
+        week_no = "1"
 
+        self.week_clr(week_no)
+
+    def week_clr(self, num):
+        for i in range(1, 5):
+            if str(i) == num:
+                mnth = self.root.ids
+
+                mnth["week" + str(i)].md_bg_color = 150 / 255, 111 / 255, 51 / 255, 1
+            else:
+                mnth = self.root.ids
+
+                mnth["week" + str(i)].md_bg_color = 1, 1, 1, 1
+
+        car_id = self.car_id_temp
+
+        year_id = DB.date_format(DB())[8] + num
+
+        week_no = f"w{num}"
+
+        if week_no == "w1":
+            self.week_name = "Week One"
+        if week_no == "w2":
+            self.week_name = "Week Two"
+        if week_no == "w3":
+            self.week_name = "Week Three"
+        if week_no == "w4":
+            self.week_name = "Week Four"
+
+        self.fuel_info(car_id, year_id, week_no)
 
     def load_item(self):
         thread = threading.Thread(target=self.add_item)
@@ -248,16 +277,18 @@ class MainApp(MDApp):
             img.source = "components/icons/file-plus.jpg"
 
     def fuel_fill(self, **kwargs):
-        car_id = self.car_id_temp
-        year_id = DB.date_format(DB())[4]
-        week_no = DB.date_format(DB())[5]
 
-        self.fuel_info(car_id, year_id, week_no)
+        month = DB.date_format(DB())[7]
+
+        if month[0] == "0":
+            month = month.replace("0", "")
+
+        self.mon_clr(month)
         toast("Refreshed!")
-
 
     def fuel_info(self, car_id, year_id, week_no):
         data = DQ.fuel_data(DQ(), car_id, year_id, week_no)
+        print(data)
         if data:
             if data == "None":
                 self.fuel_issued = "0"
@@ -268,7 +299,7 @@ class MainApp(MDApp):
                 self.consumption_per = "0"
                 self.fuel_prices = "0"
                 self.amount_f = "0"
-                toast("None!")
+                toast("No data found!")
             else:
                 self.fuel_issued = data['fuel_issued']
                 self.fuel_used = data['fuel_used']
@@ -279,6 +310,17 @@ class MainApp(MDApp):
                 self.fuel_prices = data['fuel_price']
                 self.amount_f = data['amount']
                 toast("Present!")
+        else:
+            print("no.....")
+            self.fuel_issued = "0"
+            self.fuel_used = "0"
+            self.reading_km = "0"
+            self.last_km = "0"
+            self.travel_km = "0"
+            self.consumption_per = "0"
+            self.fuel_prices = "0"
+            self.amount_f = "0"
+            toast("No data found!")
 
     def info_screen(self, instance):
         sm = self.root
