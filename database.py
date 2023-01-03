@@ -83,6 +83,8 @@ class DataBase:
         date = self.get_date()
         year, month, day = date.strip().split("-")
         self.date = date
+        if month[0] == "0":
+            month = month.replace("0", "")
         self.year_id = year + month
         self.week_no = self.week_number(int(day))
 
@@ -99,6 +101,8 @@ class DataBase:
         month_frmt = f"{month_name} {str(year)}"
         full_frmt = f"{self.day}/{month}/{year}"
         week_name = ""
+        if month[0] == "0":
+            month = month.replace("0", "")
         self.year_id = year + month
 
         if self.week_no == "w1":

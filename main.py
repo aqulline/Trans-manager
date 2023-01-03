@@ -87,6 +87,7 @@ class MainApp(MDApp):
     diesel_price = StringProperty("0")
     total_petrol = StringProperty("0")
     total_diesel = StringProperty("0")
+    current_month = StringProperty("")
 
     # SAFARI
     location_origin = StringProperty("")
@@ -215,6 +216,8 @@ class MainApp(MDApp):
 
         week_no = "1"
 
+        self.current_month = num
+
         self.week_clr(week_no)
 
     def week_clr(self, num):
@@ -230,7 +233,7 @@ class MainApp(MDApp):
 
         car_id = self.car_id_temp
 
-        year_id = DB.date_format(DB())[8] + num
+        year_id = DB.date_format(DB())[8] + self.current_month
 
         week_no = f"w{num}"
 
@@ -243,6 +246,7 @@ class MainApp(MDApp):
         if week_no == "w4":
             self.week_name = "Week Four"
 
+        print(car_id, year_id, week_no)
         self.fuel_info(car_id, year_id, week_no)
 
     def load_item(self):
